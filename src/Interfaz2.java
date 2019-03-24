@@ -16,14 +16,15 @@ public class Interfaz2 extends javax.swing.JFrame {
 
     private DefaultTableModel Tabla;
     private Interfaz interfaz1 = new Interfaz();
-    private Object[] array;
-    private JTextField A = interfaz1.getjTextField2();
+    private String text = interfaz1.getjTextField2().getText();
+    private int i = Integer.parseInt(text);
+    private Object[] array = new Object[i];
     
     public Interfaz2() {
         initComponents();
         Tabla = (DefaultTableModel) jTable1.getModel();
         Tabla.addColumn(interfaz1.getjTextField1());
-        Tabla.addRow(array[interfaz1.getjTextField2()]);
+        Tabla.addRow(array);
     }
 
     /**
