@@ -15,33 +15,41 @@ import javax.swing.table.DefaultTableModel;
 public class Interfaz2 extends javax.swing.JFrame {
 
     private DefaultTableModel Tabla;
-    private String camiones;
+    private DefaultTableModel Tabla2;
     private String rutas;
+    private String ordenes;
     private int i;
     private int j;
+    private int necesarios[][];
+    private int maximos[][];
+    private int disponibles[][];
     
-    public Interfaz2(String Camiones, String Rutas) {
+    public Interfaz2(String rutas, String ordenes) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.camiones = Camiones;
-        this.rutas = Rutas;
-        this.jTextField1.setText(this.camiones);
-        this.jTextField2.setText(this.rutas);
-        this.j = Integer.parseInt(camiones);
-        this.i =  Integer.parseInt(rutas);
+        this.rutas = rutas;
+        this.ordenes = ordenes;
+        this.jTextField1.setText(this.rutas);
+        this.jTextField2.setText(this.ordenes);
+        this.j = Integer.parseInt(rutas);
+        this.i =  Integer.parseInt(ordenes);
         Object[] array = new Object[i];
         Tabla = (DefaultTableModel) jTable1.getModel();
-        
+        Tabla2 = (DefaultTableModel) jTable2.getModel();
         
         for (int k = 0; k < j; k++) {
             
             Tabla.addColumn(k);
+            Tabla2.addColumn(k);
         }
         
         for (int k = 0; k < i; k++) {
             
             Tabla.addRow(array);
         }
+        Tabla2.addRow(array);
+        
+        
     }
 
     /**
@@ -59,6 +67,9 @@ public class Interfaz2 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,9 +87,9 @@ public class Interfaz2 extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Numero de Camiones");
+        jLabel1.setText("Numero de Rutas");
 
-        jLabel2.setText("Numero de Rutas");
+        jLabel2.setText("Numero de Ordenes");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,30 +101,55 @@ public class Interfaz2 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton1.setText("Empezar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(46, 46, 46)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(37, 37, 37))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(150, 150, 150))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jButton1)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,8 +163,12 @@ public class Interfaz2 extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -141,6 +181,34 @@ public class Interfaz2 extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        int num = Integer.parseInt(this.rutas);
+        this.disponibles = new int [1][num];
+        System.out.println("Disponibles");
+        for (int k = 0; k < num; k++) {
+            Object A = this.jTable2.getModel().getValueAt(0,k);
+            String B = String.valueOf(A);
+            int numero = Integer.parseInt(B);
+            this.disponibles[0][k] = numero;  //matriz de disponibles
+            System.out.println(numero);
+        }
+        int num2 = Integer.parseInt(this.ordenes);
+        this.maximos = new int [num2][num];
+        System.out.println("Maximos");
+        for (int i = 0; i < num2; i++) {
+                for (int j = 0; j < num; j++) {
+                Object A = this.jTable1.getModel().getValueAt(i,j);
+                String B = String.valueOf(A);
+                int numero = Integer.parseInt(B);
+                    this.maximos[i][j] = numero;  //matriz maxima
+                    System.out.println(numero);
+                }
+            }
+        Aplicacion app = new Aplicacion(this.disponibles,this.maximos,num,num2);
+        app.esSeguro();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public JTextField getjTextField1() {
         return jTextField1;
@@ -164,10 +232,13 @@ public class Interfaz2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

@@ -18,7 +18,6 @@ public class Interfaz extends javax.swing.JFrame {
      */
     
     //ATRIBUTOS
-    Aplicacion aplicacion = new Aplicacion();
     
     public Interfaz() {
         initComponents();
@@ -50,9 +49,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Numero de Camiones");
+        jLabel1.setText("Numero de Rutas");
 
-        jLabel2.setText("Numero de Rutas");
+        jLabel2.setText("Numero de Ordenes");
 
         jButton1.setText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +81,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)

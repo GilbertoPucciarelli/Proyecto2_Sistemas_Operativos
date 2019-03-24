@@ -44,7 +44,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
                               <Component id="jLabel2" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -92,12 +92,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Numero de Camiones"/>
+        <Property name="text" type="java.lang.String" value="Numero de Rutas"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Numero de Rutas"/>
+        <Property name="text" type="java.lang.String" value="Numero de Ordenes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
