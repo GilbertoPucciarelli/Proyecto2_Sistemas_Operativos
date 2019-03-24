@@ -22,6 +22,7 @@ public class Interfaz2 extends javax.swing.JFrame {
     
     public Interfaz2(String Camiones, String Rutas) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.camiones = Camiones;
         this.rutas = Rutas;
         this.jTextField1.setText(this.camiones);
@@ -30,8 +31,17 @@ public class Interfaz2 extends javax.swing.JFrame {
         this.i =  Integer.parseInt(rutas);
         Object[] array = new Object[i];
         Tabla = (DefaultTableModel) jTable1.getModel();
-        Tabla.addColumn(j);
-        Tabla.addRow(array);
+        
+        
+        for (int k = 0; k < j; k++) {
+            
+            Tabla.addColumn(k);
+        }
+        
+        for (int k = 0; k < i; k++) {
+            
+            Tabla.addRow(array);
+        }
     }
 
     /**
@@ -72,10 +82,7 @@ public class Interfaz2 extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 
