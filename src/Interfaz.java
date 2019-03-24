@@ -55,6 +55,11 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel2.setText("Numero de Rutas");
 
         jButton1.setText("Siguiente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +116,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String Recursos = this.jTextField1.getText();
+        String Procesos = this.jTextField2.getText();
+        new Interfaz2(Recursos,Procesos).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public JTextField getjTextField1() {
         return jTextField1;
