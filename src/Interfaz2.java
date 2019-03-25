@@ -217,21 +217,32 @@ public class Interfaz2 extends javax.swing.JFrame {
 
         boolean ejecutar = true;
         int num = Integer.parseInt(this.rutas);
+        boolean error = true;
+
         this.disponibles = new int[1][num];
         System.out.println("Disponibles");
 
         for (int k = 0; k < num; k++) {
             Object A = this.jTable2.getModel().getValueAt(0, k);
             String B = String.valueOf(A);
-            int numero = Integer.parseInt(B);
-            if (numero <= 0) {
+            int numero = 0;
+            try {
+                numero = Integer.parseInt(B);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Dato introducido en los camiones disponibles no es un numero");
+                error = false;
                 ejecutar = false;
-                JOptionPane.showMessageDialog(null, "Las rutas disponibles no pueden ser menores o iguales a 0");
-            } else {
-                this.disponibles[0][k] = numero;  //MATRIZ DE DISPONIBLES 
-                System.out.print(numero + " ");
             }
-            System.out.println(" ");
+            if (error) {
+                if (numero <= 0) {
+                    ejecutar = false;
+                    JOptionPane.showMessageDialog(null, "Los camiones disponibles no pueden ser menores o iguales a 0");
+                } else {
+                    this.disponibles[0][k] = numero;  //MATRIZ DE DISPONIBLES 
+                    System.out.print(numero + " ");
+                }
+                System.out.println(" ");
+            }
         }
 
         int num2 = Integer.parseInt(this.ordenes);
@@ -242,16 +253,25 @@ public class Interfaz2 extends javax.swing.JFrame {
             for (int j = 0; j < num; j++) {
                 Object A = this.jTable1.getModel().getValueAt(i, j);
                 String B = String.valueOf(A);
-                int numero = Integer.parseInt(B);
-                if (numero < 0 || numero > this.disponibles[0][j]) {
+                int numero = 0;
+                try {
+                    numero = Integer.parseInt(B);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Dato introducido en los camiones maximos no es un numero");
+                    error = false;
                     ejecutar = false;
-                    JOptionPane.showMessageDialog(null, "Los camiones no pueden ser menores a 0 ni mayores a los disponibles");
-                } else {
-                    this.maximos[i][j] = numero;  //MATRIZ MÁXIMA
-                    System.out.print(numero + " ");
                 }
+                if (error) {
+                    if (numero < 0 || numero > this.disponibles[0][j]) {
+                        ejecutar = false;
+                        JOptionPane.showMessageDialog(null, "Los camiones maximos no pueden ser menores a 0 ni mayores a los disponibles");
+                    } else {
+                        this.maximos[i][j] = numero;  //MATRIZ MÁXIMA
+                        System.out.print(numero + " ");
+                    }
+                }
+                System.out.println(" ");
             }
-            System.out.println(" ");
         }
 
         if (ejecutar) {
