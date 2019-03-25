@@ -38,14 +38,14 @@ public class Aplicacion {
                 if(numero <= disponibles[0][j]){
                 this.asignados[i][j] = numero;
                 this.disponibles[0][j] = this.disponibles[0][j] - numero;
-                System.out.println(this.asignados[i][j]);
+                System.out.print(this.asignados[i][j]+" ");
                 }else{
                 this.asignados[i][j] = 0;
-                System.out.println(this.asignados[i][j]);
+                System.out.print(this.asignados[i][j]+" ");
                 }
 
             }
-
+            System.out.println();
         }
     }
 
@@ -98,8 +98,11 @@ public class Aplicacion {
         {
             System.out.println("\nAsignado de forma segura");
         } else {
-            System.out.println("Todos los procesos se pueden asignar de forma segura");
+            System.out.println("No todos los procesos se pueden asignar de forma segura");
         }
+        Interfaz3 app2 = new Interfaz3(this.asignados,this.necesarios,this.numeroProcesos,this.numeroRecursos);
+        app2.setVisible(true);
+        this.app.cambiar2();
     }
 
 }

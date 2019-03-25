@@ -61,6 +61,12 @@ public class Interfaz2 extends javax.swing.JFrame {
             this.jTextField3.setText(jTextField3.getText() + "," + i);
         }
     }
+    
+        public void cambiar2() {
+        if (this.jTextField3.getText().equals("")) {
+        this.jTextField3.setText("No existe un estado seguro de asignación");
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -213,8 +219,9 @@ public class Interfaz2 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Las rutas disponibles no pueden ser menores o iguales a 0");
             } else {
                 this.disponibles[0][k] = numero;  //matriz de disponibles
-                System.out.println(numero);
+                System.out.print(numero+" ");
             }
+            System.out.println(" ");
         }
         int num2 = Integer.parseInt(this.ordenes);
         this.maximos = new int[num2][num];
@@ -224,14 +231,15 @@ public class Interfaz2 extends javax.swing.JFrame {
                 Object A = this.jTable1.getModel().getValueAt(i, j);
                 String B = String.valueOf(A);
                 int numero = Integer.parseInt(B);
-                if (numero < 0 || numero > this.disponibles[0][i]) {
+                if (numero < 0 || numero > this.disponibles[0][j]) {
                     ejecutar = false;
                     JOptionPane.showMessageDialog(null,"Los camiones no pueden ser menores a 0 ni mayores a los disponibles");
                 }else{
                 this.maximos[i][j] = numero;  //matriz maxima
-                System.out.println(numero);
+                System.out.print(numero+" ");
                 }
             }
+            System.out.println(" ");
         }
         if(ejecutar){
         Aplicacion app = new Aplicacion(this.disponibles, this.maximos, num, num2, this);
