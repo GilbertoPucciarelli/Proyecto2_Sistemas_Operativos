@@ -20,6 +20,7 @@ public class Interfaz3 extends javax.swing.JFrame {
     private DefaultTableModel Tabla2;
 
     public Interfaz3(int[][] asignados, int[][] necesarios, int filas, int columnas) {
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.filas = filas;
@@ -32,8 +33,8 @@ public class Interfaz3 extends javax.swing.JFrame {
 
         for (int k = 0; k < this.columnas; k++) {
 
-            Tabla.addColumn(k);
-            Tabla2.addColumn(k);
+            Tabla.addColumn("Recurso " + k);
+            Tabla2.addColumn("Recurso " + k);
         }
 
         for (int k = 0; k < this.filas; k++) {
@@ -41,6 +42,7 @@ public class Interfaz3 extends javax.swing.JFrame {
             Tabla.addRow(array2);
             Tabla2.addRow(array2);
         }
+
         System.out.println("Matriz Necesarios");
         for (int i = 0; i < this.filas; i++) {
             for (int j = 0; j < this.columnas; j++) {

@@ -39,8 +39,8 @@ public class Interfaz2 extends javax.swing.JFrame {
 
         for (int k = 0; k < j; k++) {
 
-            Tabla.addColumn(k);
-            Tabla2.addColumn(k);
+            Tabla.addColumn("Recurso " + k);
+            Tabla2.addColumn("Recurso " + k);
         }
 
         for (int k = 0; k < i; k++) {
@@ -61,10 +61,10 @@ public class Interfaz2 extends javax.swing.JFrame {
             this.jTextField3.setText(jTextField3.getText() + "," + i);
         }
     }
-    
-        public void cambiar2() {
+
+    public void cambiar2() {
         if (this.jTextField3.getText().equals("")) {
-        this.jTextField3.setText("No existe un estado seguro de asignación");
+            this.jTextField3.setText("No existe");
         }
     }
 
@@ -82,10 +82,12 @@ public class Interfaz2 extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextField1.setEditable(false);
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -93,6 +95,7 @@ public class Interfaz2 extends javax.swing.JFrame {
         });
 
         jTextField2.setEditable(false);
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -137,6 +140,8 @@ public class Interfaz2 extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Estado Seguro");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,6 +169,8 @@ public class Interfaz2 extends javax.swing.JFrame {
                         .addGap(91, 91, 91)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -190,7 +197,8 @@ public class Interfaz2 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(20, 20, 20))
         );
 
@@ -206,26 +214,30 @@ public class Interfaz2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         boolean ejecutar = true;
         int num = Integer.parseInt(this.rutas);
         this.disponibles = new int[1][num];
         System.out.println("Disponibles");
+
         for (int k = 0; k < num; k++) {
             Object A = this.jTable2.getModel().getValueAt(0, k);
             String B = String.valueOf(A);
             int numero = Integer.parseInt(B);
             if (numero <= 0) {
                 ejecutar = false;
-                JOptionPane.showMessageDialog(null,"Las rutas disponibles no pueden ser menores o iguales a 0");
+                JOptionPane.showMessageDialog(null, "Las rutas disponibles no pueden ser menores o iguales a 0");
             } else {
-                this.disponibles[0][k] = numero;  //matriz de disponibles
-                System.out.print(numero+" ");
+                this.disponibles[0][k] = numero;  //MATRIZ DE DISPONIBLES 
+                System.out.print(numero + " ");
             }
             System.out.println(" ");
         }
+
         int num2 = Integer.parseInt(this.ordenes);
         this.maximos = new int[num2][num];
         System.out.println("Maximos");
+
         for (int i = 0; i < num2; i++) {
             for (int j = 0; j < num; j++) {
                 Object A = this.jTable1.getModel().getValueAt(i, j);
@@ -233,19 +245,19 @@ public class Interfaz2 extends javax.swing.JFrame {
                 int numero = Integer.parseInt(B);
                 if (numero < 0 || numero > this.disponibles[0][j]) {
                     ejecutar = false;
-                    JOptionPane.showMessageDialog(null,"Los camiones no pueden ser menores a 0 ni mayores a los disponibles");
-                }else{
-                this.maximos[i][j] = numero;  //matriz maxima
-                System.out.print(numero+" ");
+                    JOptionPane.showMessageDialog(null, "Los camiones no pueden ser menores a 0 ni mayores a los disponibles");
+                } else {
+                    this.maximos[i][j] = numero;  //MATRIZ MÁXIMA
+                    System.out.print(numero + " ");
                 }
             }
             System.out.println(" ");
         }
-        if(ejecutar){
-        Aplicacion app = new Aplicacion(this.disponibles, this.maximos, num, num2, this);
-        app.esSeguro();
-        }
 
+        if (ejecutar) {
+            Aplicacion app = new Aplicacion(this.disponibles, this.maximos, num, num2, this);
+            app.esSeguro();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -284,6 +296,7 @@ public class Interfaz2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
