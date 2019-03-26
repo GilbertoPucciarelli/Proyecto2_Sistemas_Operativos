@@ -39,8 +39,8 @@ public class Interfaz2 extends javax.swing.JFrame {
 
         for (int k = 0; k < j; k++) {
 
-            Tabla.addColumn("Recurso " + k);
-            Tabla2.addColumn("Recurso " + k);
+            Tabla.addColumn("Ruta " + k);
+            Tabla2.addColumn("Ruta " + k);
         }
 
         for (int k = 0; k < i; k++) {

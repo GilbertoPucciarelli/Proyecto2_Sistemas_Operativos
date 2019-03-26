@@ -128,35 +128,28 @@ public class Interfaz extends javax.swing.JFrame {
         boolean error = true;
         int recursos = 0;
         int procesos = 0;
-        
+
         try {
             recursos = parseInt(Recursos);
-        } catch (NumberFormatException e) {
-            error = false;
-            recursos = 1;
-            JOptionPane.showMessageDialog(null, "Dato introducido en las rutas no es un numero");
-        }
-        
-                try {
             procesos = parseInt(Procesos);
         } catch (NumberFormatException e) {
             error = false;
-            procesos = 1;
-            JOptionPane.showMessageDialog(null, "Dato introducido en las ordenes no es un numero");
+            recursos = 1;
+            JOptionPane.showMessageDialog(null, "Datos introducidos incorrectos");
         }
-        
-        if(error && recursos > 0 && procesos > 0){
-        new Interfaz2(Recursos, Procesos).setVisible(true);
-        this.setVisible(false);
-        }else{
-        if(recursos <= 0){
-        JOptionPane.showMessageDialog(null, "Las rutas no pueden ser menor o igual a 0");
+
+        if (error && recursos > 0 && procesos > 0) {
+            new Interfaz2(Recursos, Procesos).setVisible(true);
+            this.setVisible(false);
+        } else {
+            if (recursos <= 0) {
+                JOptionPane.showMessageDialog(null, "Las rutas no pueden ser menor o igual a 0");
+            }
+            if (procesos <= 0) {
+                JOptionPane.showMessageDialog(null, "Las ordenes no pueden ser menor o igual a 0");
+            }
         }
-        if(procesos <= 0){
-        JOptionPane.showMessageDialog(null, "Las ordenes no pueden ser menor o igual a 0");
-        }
-        }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public JTextField getjTextField1() {
