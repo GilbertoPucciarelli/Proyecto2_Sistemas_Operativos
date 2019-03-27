@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Interfaz2 extends javax.swing.JFrame {
 
+    //ATRIBUTOS
     private DefaultTableModel Tabla;
     private DefaultTableModel Tabla2;
     private String rutas;
@@ -24,6 +25,7 @@ public class Interfaz2 extends javax.swing.JFrame {
     private int maximos[][];
     private int disponibles[][];
 
+    //CONSTRUCTOR
     public Interfaz2(String rutas, String ordenes) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -54,6 +56,7 @@ public class Interfaz2 extends javax.swing.JFrame {
     public Interfaz2() {
     }
 
+    //ESCRIBE EL ESTADO SEGURO
     public void cambiar(int i) {
         if (this.jTextField3.getText().equals("")) {
             this.jTextField3.setText("" + i);
@@ -62,6 +65,7 @@ public class Interfaz2 extends javax.swing.JFrame {
         }
     }
 
+    //ESCRIBE QUE NO EXISTE UN ESTADO SEGURO
     public void cambiar2() {
         if (this.jTextField3.getText().equals("")) {
             this.jTextField3.setText("No existe");
@@ -191,7 +195,7 @@ public class Interfaz2 extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)

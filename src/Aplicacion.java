@@ -10,17 +10,20 @@
  */
 public class Aplicacion {
 
-    private int necesarios[][], asignados[][], maximos[][], disponibles[][], numeroProcesos, numeroRecursos;
+    //ATRIBUTOS
+    private int necesarios[][], asignados[][], maximos[][], disponibles[][], disponibles2[][], numeroProcesos, numeroRecursos;
     Interfaz2 app;
 
+    //CONSTRUCTOR
     public Aplicacion(int[][] disponibles, int[][] maximos, int numeroRecursos, int numeroProcesos, Interfaz2 interfaz) {
 
         this.app = interfaz;
-        this.necesarios = new int[numeroProcesos][numeroRecursos];  //INICIALIZACIÓN DE ARRAYS
+        this.necesarios = new int[numeroProcesos][numeroRecursos];
         this.maximos = new int[numeroProcesos][numeroRecursos];
         this.asignados = new int[numeroProcesos][numeroRecursos];
         this.disponibles = new int[1][numeroRecursos];
         this.disponibles = disponibles;
+        this.disponibles2 = new int[1][numeroRecursos];
         this.maximos = maximos;
         this.numeroRecursos = numeroRecursos;
         this.numeroProcesos = numeroProcesos;
@@ -39,6 +42,7 @@ public class Aplicacion {
 
                     this.asignados[i][j] = numero;
                     this.disponibles[0][j] = this.disponibles[0][j] - numero;
+                    this.disponibles2[0][j] = this.disponibles[0][j];
                     System.out.print(this.asignados[i][j] + " ");
                 } else {
 
@@ -51,6 +55,7 @@ public class Aplicacion {
         }
     }
 
+    //FUNCION QUE CALCULA LA MATRIZ DE NECESARIOS
     private int[][] calcularMatrizNecesarios() {
 
         for (int i = 0; i < this.numeroProcesos; i++) {
@@ -62,9 +67,9 @@ public class Aplicacion {
         return this.necesarios;
     }
 
+    //FUNCION QUE REVISA SI LOS RECURSOS PUEDEN SER ASIGNADOS A UN PROCESO
     private boolean revisar(int i) {
 
-        //REVISAR SI LOS RECURSOS PUEDEN SER ASIGNADOS A UN PROCESO
         for (int j = 0; j < this.numeroRecursos; j++) {
             if (this.disponibles[0][j] < this.necesarios[i][j]) {
                 return false;
@@ -74,6 +79,7 @@ public class Aplicacion {
         return true;
     }
 
+    //FUNCION QUE DEVUELVE EL ESTADO SEGURO
     public void esSeguro() {
 
         asignacion();
@@ -106,7 +112,7 @@ public class Aplicacion {
             System.out.println("No todos los procesos se pueden asignar de forma segura");
         }
 
-        Interfaz3 app2 = new Interfaz3(this.asignados, this.necesarios, this.numeroProcesos, this.numeroRecursos);
+        Interfaz3 app2 = new Interfaz3(this.asignados, this.necesarios, this.numeroProcesos, this.numeroRecursos, this.disponibles2);
         app2.setVisible(true);
         this.app.cambiar2();
     }

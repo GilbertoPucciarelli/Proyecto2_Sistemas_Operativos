@@ -17,7 +17,8 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    //ATRIBUTOS
+    
+    //CONSTRUCTOR
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -121,6 +122,7 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    //BOTON CONTINUAR
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         String Recursos = this.jTextField1.getText();
